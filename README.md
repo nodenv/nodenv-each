@@ -23,3 +23,7 @@ the output.
 $ nodenv each npm install
 $ nodenv each -v npm test
 ```
+
+### Credits
+
+Forked from [rbenv-each](https://github.com/rbenv/rbenv-each) and modified to work for [nodenv](https://github.com/OiNutter/nodenv).
