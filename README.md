@@ -20,6 +20,6 @@ the output.
 ### Examples:
 
 ```
-$ nodenv each bundle install
-$ nodenv each -v rake test
+$ nodenv each npm install
+$ nodenv each -v npm test
 ```
