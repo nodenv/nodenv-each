@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 #
-# Summary: Execute a command for each Ruby version
+# Summary: Execute a command for each Node version
 #
-# Usage: rbenv each [-v] <command> [arg1 arg2...]
+# Usage: nodenv each [-v] <command> [arg1 arg2...]
 #
-# Executes a command for each Ruby version by setting RBENV_VERSION.
+# Executes a command for each Node version by setting NODENV_VERSION.
 # Failures are collected and reported at the end.
 #
-#    -v  Verbose mode. Prints a header for each ruby.
+#    -v  Verbose mode. Prints a header for each node
 #
 set -e
-[ -n "$RBENV_DEBUG" ] && set -x
+[ -n "$NODENV_DEBUG" ] && set -x
 
-# Provide rbenv completions
+# Provide nodenv completions
 if [ "$1" = "--complete" ]; then
   echo -v
   exit
@@ -25,7 +25,7 @@ fi
 
 case "$1" in
 ""  | -* )
-  rbenv-help --usage each >&2
+  nodenv-help --usage each >&2
   exit 1
   ;;
 esac
@@ -42,13 +42,13 @@ if [ -t 1 ]; then
   NORMAL="\033[0m"
 fi
 
-failed_rubies=""
+failed_nodes=""
 
 trap "exit 1" INT
 
-for ruby in $(rbenv versions --bare); do
+for node in $(nodenv versions --bare); do
   if [ -n "$verbose" ]; then
-    header="===[$ruby]==================================================================="
+    header="===[$node]==================================================================="
     header="${header:0:72}"
     header="${header/[/[${YELLOW}}"
     header="${header/]/${GRAY}]}"
@@ -56,13 +56,13 @@ for ruby in $(rbenv versions --bare); do
   fi
 
   STATUS=0
-  RBENV_VERSION="$ruby" "$@" || STATUS=$?
-  [ $STATUS -eq 0 ] || failed_rubies="$failed_rubies $ruby"
+  NODENV_VERSION="$node" "$@" || STATUS=$?
+  [ $STATUS -eq 0 ] || failed_nodes="$failed_nodes $node"
 
   [ -n "$verbose" ] && echo
 done
 
-if [ -n "$failed_rubies" ]; then
-  echo -e "${RED}FAILED IN:${failed_rubies}${NORMAL}"
+if [ -n "$failed_nodes" ]; then
+  echo -e "${RED}FAILED IN:${failed_nodes}${NORMAL}"
   exit 1
 fi
