@@ -1,0 +1,26 @@
+{
+  "name": "nodenv-each",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Jason Karns <jason@karns.name> (http://jason.karns.name/)",
+  "homepage": "https://github.com/jasonkarns/nodenv-each#readme",
+  "description": "nodenv plugin to run a command across all installed nodes",
+  "scripts": {
+    "test": "bats test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonkarns/nodenv-each.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jasonkarns/nodenv-each/issues"
+  },
+  "keywords": [
+    "node",
+    "nodenv",
+    "version",
+    "each",
+    "command"
+  ],
+  "license": "MIT"
+}
