@@ -55,9 +55,7 @@ for node in $(nodenv versions --bare); do
     echo -e "${GRAY}${header}${NORMAL}"
   fi
 
-  STATUS=0
-  NODENV_VERSION="$node" "$@" || STATUS=$?
-  [ $STATUS -eq 0 ] || failed_nodes="$failed_nodes $node"
+  NODENV_VERSION="$node" "$@" || failed_nodes="$failed_nodes $node"
 
   [ -n "$verbose" ] && echo
 done
