@@ -25,10 +25,14 @@ if [ "$1" = "-v" ]; then
 fi
 
 case "$1" in
-""  | -* )
-  nodenv-help --usage each >&2
-  exit 1
-  ;;
+  help | --help )
+    nodenv-help --usage each
+    exit
+    ;;
+  ""  | -* )
+    nodenv-help --usage each >&2
+    exit 1
+    ;;
 esac
 
 GRAY=""
