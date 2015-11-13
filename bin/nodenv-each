@@ -13,21 +13,25 @@ set -e
 [ -n "$NODENV_DEBUG" ] && set -x
 
 # Provide nodenv completions
-if [ "$1" = "--complete" ]; then
-  echo -v
-  exit
-fi
-
-if [ "$1" = "-v" ]; then
-  verbose=1
-  shift
-fi
-
 case "$1" in
-""  | -* )
-  nodenv-help --usage each >&2
-  exit 1
-  ;;
+  --complete )
+    echo --help
+    echo --verbose
+    nodenv shims --short
+    exit
+    ;;
+  -v | --verbose )
+    verbose=1
+    shift
+    ;;
+  help | --help )
+    nodenv-help --usage each
+    exit
+    ;;
+  ""  | -* )
+    nodenv-help --usage each >&2
+    exit 1
+    ;;
 esac
 
 GRAY=""
