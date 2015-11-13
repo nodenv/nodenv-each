@@ -12,14 +12,13 @@
 set -e
 [ -n "$NODENV_DEBUG" ] && set -x
 
-# Provide nodenv completions
-if [ "$1" = "--complete" ]; then
-  echo -v
-  nodenv shims --short
-  exit
-fi
-
 case "$1" in
+# Provide nodenv completions
+  --complete )
+    echo -v
+    nodenv shims --short
+    exit
+    ;;
   -v | --verbose )
     verbose=1
     shift
