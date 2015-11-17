@@ -25,8 +25,7 @@ case "$1" in
     shift
     ;;
   --help )
-    nodenv-help --usage each
-    exit
+    exec nodenv-help each
     ;;
   ""  | -* )
     nodenv-help --usage each >&2
