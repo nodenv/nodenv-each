@@ -5,7 +5,7 @@ To install nodenv-each, clone this repository into your nodenv plugins directory
 
 ```
 $ mkdir -p "$(nodenv root)"/plugins
-$ git clone https://github.com/jasonkarns/nodenv-each.git "$(nodenv root)"/plugins/nodenv-each
+$ git clone https://github.com/nodenv/nodenv-each.git "$(nodenv root)"/plugins/nodenv-each
 ```
 
 ## Usage
