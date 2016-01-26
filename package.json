@@ -2,25 +2,30 @@
   "name": "nodenv-each",
   "version": "1.1.0",
   "private": true,
-  "author": "Jason Karns <jason@karns.name> (http://jason.karns.name/)",
-  "homepage": "https://github.com/nodenv/nodenv-each#readme",
   "description": "nodenv plugin to run a command across all installed nodes",
-  "scripts": {
-    "test": "bats test"
-  },
+  "homepage": "https://github.com/nodenv/nodenv-each#readme",
+  "license": "MIT",
+  "author": "Chris Eppstein <chris@eppsteins.net> (http://chriseppstein.github.com)",
+  "contributors": [
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nodenv/nodenv-each.git"
+    "url": "https://github.com/nodenv/nodenv-each.git"
   },
   "bugs": {
     "url": "https://github.com/nodenv/nodenv-each/issues"
   },
-  "keywords": [
-    "node",
-    "nodenv",
-    "version",
-    "each",
-    "command"
-  ],
-  "license": "MIT"
+  "directories": {
+    "bin": "bin",
+    "lib": "libexec",
+    "test": "test"
+  },
+  "scripts": {
+    "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
+    "postversion": "git push origin master v$npm_package_version && npm run publish:brew"
+  },
+  "devDependencies": {
+    "brew-publish": "git+https://github.com/jasonkarns/brew-publish.git#nodenv-tap"
+  }
 }
