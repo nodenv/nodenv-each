@@ -1,7 +1,6 @@
 ## Installation
 
-To install nodenv-each, clone this repository into your nodenv plugins directory. (You'll need a recent version of nodenv that supports plugin bundles.)
-
+To install nodenv-each, clone this repository into your nodenv plugins directory.
 
 ```
 $ mkdir -p "$(nodenv root)"/plugins
