@@ -24,6 +24,15 @@ $ nodenv each npm install
 $ nodenv each -v npm test
 ```
 
-### Credits
+## Credits
 
 Forked from [rbenv-each](https://github.com/rbenv/rbenv-each) and modified to work for [nodenv](https://github.com/nodenv/nodenv).
+
+## Credits
+
+Forked from [Chris Eppstein][chriseppstein]'s [rbenv-each][] by [Jason Karns][jasonkarns] and modified for [nodenv][].
+
+[chriseppstein]: https://github.com/chriseppstein
+[rbenv-each]: https://github.com/rbenv/rbenv-each
+[jasonkarns]: https://github.com/jasonkarns
+[nodenv]: https://github.com/nodenv/nodenv
