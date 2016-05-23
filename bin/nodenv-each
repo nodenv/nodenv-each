@@ -15,7 +15,6 @@ set -e
 # Provide nodenv completions
 case "$1" in
   --complete )
-    echo --help
     echo --verbose
     nodenv shims --short
     exit
@@ -23,9 +22,6 @@ case "$1" in
   -v | --verbose )
     verbose=1
     shift
-    ;;
-  --help )
-    exec nodenv-help each
     ;;
   ""  | -* )
     nodenv-help --usage each >&2
