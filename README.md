@@ -33,3 +33,4 @@ Forked from [Chris Eppstein][chriseppstein]'s [rbenv-each][] by [Jason Karns][ja
 [rbenv-each]: https://github.com/rbenv/rbenv-each
 [jasonkarns]: https://github.com/jasonkarns
 [nodenv]: https://github.com/nodenv/nodenv
+[nodenv-aliases]: https://github.com/nodenv/nodenv-aliases
