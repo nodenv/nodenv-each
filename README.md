@@ -16,6 +16,8 @@ $ nodenv help each
 Verbose mode will print a header for each node so you can distinguish
 the output.
 
+**note**: Aliases ([nodenv-aliases][]) or symlinks are skipped.
+
 ### Examples:
 
 ```
