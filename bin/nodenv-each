@@ -45,7 +45,7 @@ failed_nodes=""
 
 trap "exit 1" INT
 
-for node in $(nodenv versions --bare); do
+for node in $(nodenv versions --bare --skip-aliases); do
   if [ -n "$verbose" ]; then
     header="===[$node]==================================================================="
     header="${header:0:72}"
