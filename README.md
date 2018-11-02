@@ -1,3 +1,9 @@
+# nodenv-each
+
+[![Build Status](https://travis-ci.org/nodenv/nodenv-each.svg?branch=master)](https://travis-ci.org/nodenv/nodenv-each)
+
+Invoke commands for each nodenv Node version
+
 ## Installation
 
 To install nodenv-each, clone this repository into your nodenv plugins directory.
