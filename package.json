@@ -22,6 +22,8 @@
     "test": "test"
   },
   "scripts": {
+    "test": "npm run lint",
+    "lint": "shellcheck bin/*",
     "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
     "postversion": "git push --follow-tags && npm run publish:brew"
   },
