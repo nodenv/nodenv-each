@@ -28,6 +28,6 @@
     "postversion": "git push --follow-tags && npm run publish:brew"
   },
   "devDependencies": {
-    "brew-publish": "^2.0.0"
+    "brew-publish": "^2.3.1"
   }
 }
