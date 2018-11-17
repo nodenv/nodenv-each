@@ -21,8 +21,9 @@
     "test": "test"
   },
   "scripts": {
+    "start": "bin/nodenv-each",
     "posttest": "npm run lint",
-    "lint": "shellcheck $(git ls-files | grep -E -e '^bin/' -e '\\.sh$' -e '\\.bash$')",
+    "lint": "git ls-files bin | xargs shellcheck",
     "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
     "postversion": "git push --follow-tags && npm run publish:brew"
   },
