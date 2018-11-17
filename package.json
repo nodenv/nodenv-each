@@ -20,6 +20,9 @@
     "lib": "libexec",
     "test": "test"
   },
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "start": "bin/nodenv-each",
     "posttest": "npm run lint",
