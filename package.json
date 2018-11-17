@@ -4,8 +4,8 @@
   "description": "nodenv plugin to run a command across all installed nodes",
   "homepage": "https://github.com/nodenv/nodenv-each#readme",
   "license": "MIT",
-  "author": "Chris Eppstein <chris@eppsteins.net> (http://chriseppstein.github.com)",
   "contributors": [
+    "Chris Eppstein <chris@eppsteins.net> (http://chriseppstein.github.com)",
     "Jason Karns <jason@karns.name> (http://jason.karns.name)"
   ],
   "repository": {
