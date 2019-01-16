@@ -33,7 +33,7 @@ the output.
 
 **note**: Aliases ([nodenv-aliases][]) or symlinks are skipped.
 
-### Examples:
+### Examples
 
 ```
 $ nodenv each npm install
