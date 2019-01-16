@@ -4,6 +4,8 @@
 
 Invoke commands for each nodenv Node version
 
+<!-- toc -->
+
 ## Installation
 
 To install nodenv-each, clone this repository into your nodenv plugins directory.
