@@ -8,7 +8,7 @@ Invoke commands for each nodenv Node version
 
 - [Installation](#installation)
 - [Usage](#usage)
-  * [Examples:](#examples)
+  * [Examples](#examples)
 - [Credits](#credits)
 
 <!-- tocstop -->
