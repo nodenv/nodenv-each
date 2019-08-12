@@ -13,25 +13,28 @@ set -e
 [ -n "$NODENV_DEBUG" ] && set -x
 
 # Provide nodenv completions
-case "$1" in
-  --complete )
-    echo --verbose
-    nodenv shims --short
-    exit
-    ;;
-  -v | --verbose )
-    verbose=1
-    shift
-    ;;
-  -h | --help )
-    nodenv-help each
-    exit
-    ;;
-  ""  | -* )
-    nodenv-help --usage each >&2
-    exit 1
-    ;;
-esac
+for arg in "$@"; do
+  case "$arg" in
+    --complete )
+      echo --verbose
+      nodenv shims --short
+      exit
+      ;;
+    -v | --verbose )
+      verbose=1
+      ;;
+    -h | --help )
+      nodenv-help each
+      exit
+      ;;
+    "" | -* )
+      nodenv-help --usage each >&2
+      exit 1
+      ;;
+    * ) break ;;
+  esac
+  shift
+done
 
 GRAY=""
 RED=""
