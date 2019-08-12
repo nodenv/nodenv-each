@@ -2,7 +2,7 @@
 #
 # Summary: Execute a command for each Node version
 #
-# Usage: nodenv each [-v] <command> [arg1 arg2...]
+# Usage: nodenv each [-v] [--] <command> [arg1 arg2...]
 #
 # Executes a command for each Node version by setting NODENV_VERSION.
 # Failures are collected and reported at the end.
@@ -26,6 +26,10 @@ for arg in "$@"; do
     -h | --help )
       nodenv-help each
       exit
+      ;;
+    -- )
+      shift
+      break
       ;;
     "" | -* )
       nodenv-help --usage each >&2
