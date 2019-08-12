@@ -7,7 +7,9 @@
 # Executes a command for each Node version by setting NODENV_VERSION.
 # Failures are collected and reported at the end.
 #
-#    -v  Verbose mode. Prints a header for each node.
+# Options:
+#    --help, -h       Show help/usage
+#    --verbose, -v    Verbose mode. Prints a header for each node.
 #
 set -e
 [ -n "$NODENV_DEBUG" ] && set -x
@@ -21,12 +23,12 @@ fi
 
 for arg in "$@"; do
   case "$arg" in
-    -v | --verbose )
-      verbose=1
-      ;;
     -h | --help )
       nodenv-help each
       exit
+      ;;
+    -v | --verbose )
+      verbose=1
       ;;
     -- )
       shift
