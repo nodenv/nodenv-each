@@ -40,6 +40,11 @@ for arg in "$@"; do
   shift
 done
 
+if [ $# -eq 0 ]; then
+  nodenv-help --usage each >&2
+  exit 1
+fi
+
 GRAY=""
 RED=""
 YELLOW=""
