@@ -23,6 +23,10 @@ case "$1" in
     verbose=1
     shift
     ;;
+  -h | --help )
+    nodenv-help each
+    exit
+    ;;
   ""  | -* )
     nodenv-help --usage each >&2
     exit 1
