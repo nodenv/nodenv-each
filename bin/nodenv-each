@@ -2,12 +2,12 @@
 #
 # Summary: Execute a command for each Node version
 #
-# Usage: nodenv each [-sv] <command> [arg1 arg2...]
+# Usage: nodenv each [-gv] <command> [arg1 arg2...]
 #
 # Executes a command for each Node version by setting NODENV_VERSION.
 # Failures are collected and reported at the end.
 #
-#    -s  Include the system `node`.
+#    -g  Include the system `node`.
 #    -v  Verbose mode. Prints a header for each node.
 #
 set -e
@@ -26,7 +26,7 @@ for arg in "$@"; do
       verbose=1
       shift
       ;;
-    -s | --system )
+    -g | --system )
       include_system=1
       shift
       ;;
