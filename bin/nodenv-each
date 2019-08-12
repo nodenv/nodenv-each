@@ -17,7 +17,7 @@ for arg in "$@"; do
   case "$arg" in
     --complete )
       echo --verbose
-      nodenv shims --short
+      nodenv-shims --short
       exit
       ;;
     -v | --verbose )
@@ -61,7 +61,7 @@ failed_nodes=""
 
 trap "exit 1" INT
 
-for node in $(nodenv versions --bare --skip-aliases); do
+for node in $(nodenv-versions --bare --skip-aliases); do
   if [ -n "$verbose" ]; then
     header="===[$node]==================================================================="
     header="${header:0:72}"
