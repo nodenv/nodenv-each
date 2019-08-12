@@ -2,7 +2,7 @@
 #
 # Summary: Execute a command for each Node version
 #
-# Usage: nodenv each [-gv] <command> [arg1 arg2...]
+# Usage: nodenv each [-g] [-v] <command> [arg1 arg2...]
 #
 # Executes a command for each Node version by setting NODENV_VERSION.
 # Failures are collected and reported at the end.
@@ -27,11 +27,6 @@ for arg in "$@"; do
       shift
       ;;
     -g | --system )
-      include_system=1
-      shift
-      ;;
-    -sv | -vs )
-      verbose=1
       include_system=1
       shift
       ;;
