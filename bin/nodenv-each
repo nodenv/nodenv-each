@@ -13,13 +13,14 @@ set -e
 [ -n "$NODENV_DEBUG" ] && set -x
 
 # Provide nodenv completions
+if [ "$1" == --complete ]; then
+  echo --verbose
+  nodenv-shims --short
+  exit
+fi
+
 for arg in "$@"; do
   case "$arg" in
-    --complete )
-      echo --verbose
-      nodenv-shims --short
-      exit
-      ;;
     -v | --verbose )
       verbose=1
       ;;
