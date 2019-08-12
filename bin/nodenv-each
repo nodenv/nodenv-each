@@ -2,39 +2,50 @@
 #
 # Summary: Execute a command for each Node version
 #
-# Usage: nodenv each [-g] [-v] <command> [arg1 arg2...]
+# Usage: nodenv each [-g] [-v] [--] <command> [arg1 arg2...]
 #
 # Executes a command for each Node version by setting NODENV_VERSION.
 # Failures are collected and reported at the end.
 #
-#    -g  Include the system `node`.
-#    -v  Verbose mode. Prints a header for each node.
+# Options:
+#   --help, -h      Show help/usage
+#   --system, -g    Include the system `node`.
+#   --verbose, -v   Verbose mode. Prints a header for each node.
 #
 set -e
 [ -n "$NODENV_DEBUG" ] && set -x
 
 # Provide nodenv completions
+if [ "$1" == --complete ]; then
+  echo --system
+  echo --verbose
+  nodenv-shims --short
+  exit
+fi
+
 for arg in "$@"; do
   case "$arg" in
-    --complete )
-      echo --verbose
-      echo --system
-      nodenv shims --short
+    -h | --help )
+      nodenv-help each
       exit
-      ;;
-    -v | --verbose )
-      verbose=1
-      shift
       ;;
     -g | --system )
       include_system=1
-      shift
       ;;
-    -h  | --help )
+    -v | --verbose )
+      verbose=1
+      ;;
+    -- )
+      shift
+      break
+      ;;
+    "" | -* )
       nodenv-help --usage each >&2
       exit 1
       ;;
+    * ) break ;;
   esac
+  shift
 done
 
 if [ $# -eq 0 ]; then
@@ -58,7 +69,7 @@ failed_nodes=""
 
 trap "exit 1" INT
 
-for node in ${include_system:+system} $(nodenv versions --bare --skip-aliases); do
+for node in ${include_system:+system} $(nodenv-versions --bare --skip-aliases); do
   if [ -n "$verbose" ]; then
     header="===[$node]==================================================================="
     header="${header:0:72}"
