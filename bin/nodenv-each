@@ -58,12 +58,7 @@ failed_nodes=""
 
 trap "exit 1" INT
 
-NODES=$(nodenv versions --bare --skip-aliases)
-if [ -n "$include_system" ]; then
-  NODES="system $NODES"
-fi
-
-for node in $NODES; do
+for node in ${include_system:+system} $(nodenv versions --bare --skip-aliases); do
   if [ -n "$verbose" ]; then
     header="===[$node]==================================================================="
     header="${header:0:72}"
