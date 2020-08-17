@@ -2,15 +2,17 @@
 #
 # Summary: Execute a command for each Node version
 #
-# Usage: nodenv each [-g] [-v] [--] <command> [arg1 arg2...]
+# Usage: nodenv each [-g] [-p] [-j] [-v] [--] <command> [arg1 arg2...]
 #
 # Executes a command for each Node version by setting NODENV_VERSION.
 # Failures are collected and reported at the end.
 #
 # Options:
-#   --help, -h      Show help/usage
-#   --system, -g    Include the system `node`.
-#   --verbose, -v   Verbose mode. Prints a header for each node.
+#   --help, -h         Show help/usage
+#   --system, -g       Include the system `node`.
+#   --parallel -p      Run everything in parallel.
+#   --jobs=[n] -j=[n]  Run at most N jobs.
+#   --verbose, -v      Verbose mode. Prints a header for each node.
 #
 set -e
 [ -n "$NODENV_DEBUG" ] && set -x
@@ -23,6 +25,8 @@ if [ "$1" == --complete ]; then
   exit
 fi
 
+jobs=$(nproc)
+
 for arg in "$@"; do
   case "$arg" in
     -h | --help )
@@ -31,6 +35,12 @@ for arg in "$@"; do
       ;;
     -g | --system )
       include_system=1
+      ;;
+    -p | --parallel )
+      parallel=1;
+      ;;
+    -j=* | --jobs=* )
+      jobs="${arg#*=}"
       ;;
     -v | --verbose )
       verbose=1
@@ -48,9 +58,17 @@ for arg in "$@"; do
   shift
 done
 
+
 if [ $# -eq 0 ]; then
   nodenv-help --usage each >&2
   exit 1
+fi
+
+if [ -n "$parallel" ]; then
+    if ! command -v parallel &> /dev/null; then
+        echo "You must install the parallel tool in order to run jobs in parallel"
+        exit 1
+    fi
 fi
 
 GRAY=""
@@ -69,21 +87,32 @@ failed_nodes=""
 
 trap "exit 1" INT
 
-for node in ${include_system:+system} $(nodenv-versions --bare --skip-aliases); do
+exec_node() {
   if [ -n "$verbose" ]; then
-    header="===[$node]==================================================================="
-    header="${header:0:72}"
-    header="${header/[/[${YELLOW}}"
-    header="${header/]/${GRAY}]}"
+    local header="===[$1]==================================================================="
+    local header="${header:0:72}"
+    local header="${header/[/[${YELLOW}}"
+    local header="${header/]/${GRAY}]}"
     echo -e "${GRAY}${header}${NORMAL}"
   fi
-
-  NODENV_VERSION="$node" "$@" || failed_nodes="$failed_nodes $node"
-
+  local version="$1"
+  shift
+  NODENV_VERSION="$version" "$@"
   [ -n "$verbose" ] && echo
-done
+}
 
-if [ -n "$failed_nodes" ]; then
-  echo -e "${RED}FAILED IN:${failed_nodes}${NORMAL}"
-  exit 1
+NODES=$(printf "%s" "${include_system:+system}" "$(nodenv-versions --bare --skip-aliases)" | tr ' ' '\n')
+
+if [ -n "$parallel" ]; then
+    export -f exec_node
+    export verbose YELLOW GRAY NORMAL
+    echo "${NODES}" | parallel -j "${jobs}" --env YELLOW --env GRAY --env NORMAL --env verbose --env exec_node exec_node "{0}" "$@"
+else
+    for node in ${NODES}; do
+        NODENV_VERSION="$node" "$@" || failed_nodes="$failed_nodes $node"
+        if [ -n "$failed_nodes" ]; then
+            echo -e "${RED}FAILED IN:${failed_nodes}${NORMAL}"
+            exit 1
+        fi
+    done
 fi
