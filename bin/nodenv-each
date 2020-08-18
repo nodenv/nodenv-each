@@ -64,7 +64,7 @@ fi
 
 if [ -n "$parallel" ]; then
     if ! command -v parallel &> /dev/null; then
-        echo "You must install the parallel tool in order to run jobs in parallel"
+        1>&2 echo "You must install the parallel tool in order to run jobs in parallel"
         exit 1
     fi
 fi
