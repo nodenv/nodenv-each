@@ -27,6 +27,8 @@
     "start": "bin/nodenv-each",
     "posttest": "npm run lint",
     "lint": "git ls-files bin */*.*sh | xargs shellcheck",
+    "lint:fix": "prettier --write .",
+    "postlint": "prettier --check .",
     "postversion": "git push --follow-tags"
   },
   "devDependencies": {
