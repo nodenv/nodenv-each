@@ -25,6 +25,7 @@
   ],
   "scripts": {
     "start": "bin/nodenv-each",
+    "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
     "lint": "git ls-files bin */*.*sh | xargs shellcheck",
     "lint:fix": "prettier --write .",
