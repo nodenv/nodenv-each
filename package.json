@@ -26,7 +26,11 @@
   "scripts": {
     "start": "bin/nodenv-each",
     "posttest": "npm run lint",
-    "lint": "git ls-files bin | xargs shellcheck",
+    "lint": "git ls-files bin */*.*sh | xargs shellcheck",
     "postversion": "git push --follow-tags"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "shellcheck": "^4.1.0"
   }
 }
