@@ -17,15 +17,15 @@ Invoke commands for each nodenv Node version
 
 To install nodenv-each, clone this repository into your nodenv plugins directory.
 
-```
-$ mkdir -p "$(nodenv root)"/plugins
-$ git clone https://github.com/nodenv/nodenv-each.git "$(nodenv root)"/plugins/nodenv-each
+```console
+mkdir -p "$(nodenv root)"/plugins
+git clone https://github.com/nodenv/nodenv-each.git "$(nodenv root)"/plugins/nodenv-each
 ```
 
 ## Usage
 
-```
-$ nodenv help each
+```console
+nodenv help each
 ```
 
 Verbose mode will print a header for each node so you can distinguish
@@ -35,17 +35,16 @@ the output.
 
 ### Examples
 
-```
-$ nodenv each npm install
-$ nodenv each -v npm test
+```console
+nodenv each npm install
+nodenv each -v npm test
 ```
 
 ## Credits
 
-Forked from [Chris Eppstein][chriseppstein]'s [rbenv-each][] by [Jason Karns][jasonkarns] and modified for [nodenv][].
+Forked from [Chris Eppstein's](https://github.com/chriseppstein)
+[rbenv-each](https://github.com/rbenv/rbenv-each)
+by [Jason Karns](https://github.com/jasonkarns)
+and modified for [nodenv](https://github.com/nodenv/nodenv).
 
-[chriseppstein]: https://github.com/chriseppstein
-[rbenv-each]: https://github.com/rbenv/rbenv-each
-[jasonkarns]: https://github.com/jasonkarns
-[nodenv]: https://github.com/nodenv/nodenv
 [nodenv-aliases]: https://github.com/nodenv/nodenv-aliases
