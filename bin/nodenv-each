@@ -25,25 +25,25 @@ fi
 
 for arg in "$@"; do
   case "$arg" in
-    -h | --help )
-      nodenv-help each
-      exit
-      ;;
-    -g | --system )
-      include_system=1
-      ;;
-    -v | --verbose )
-      verbose=1
-      ;;
-    -- )
-      shift
-      break
-      ;;
-    "" | -* )
-      nodenv-help --usage each >&2
-      exit 1
-      ;;
-    * ) break ;;
+  -h | --help)
+    nodenv-help each
+    exit
+    ;;
+  -g | --system)
+    include_system=1
+    ;;
+  -v | --verbose)
+    verbose=1
+    ;;
+  --)
+    shift
+    break
+    ;;
+  "" | -*)
+    nodenv-help --usage each >&2
+    exit 1
+    ;;
+  *) break ;;
   esac
   shift
 done
