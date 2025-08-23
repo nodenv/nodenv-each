@@ -28,8 +28,5 @@
     "posttest": "npm run lint",
     "lint": "git ls-files bin | xargs shellcheck",
     "postversion": "git push --follow-tags"
-  },
-  "devDependencies": {
-    "brew-publish": "^2.3.1"
   }
 }
