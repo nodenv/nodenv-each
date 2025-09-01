@@ -1,6 +1,6 @@
 # nodenv-each
 
-Invoke commands for each installed Node version
+A [nodenv][] plugin to run commands with each installed Node version.
 
 [![Tests](https://img.shields.io/github/actions/workflow/status/nodenv/nodenv-each/test.yml?label=tests&logo=github)](https://github.com/nodenv/nodenv-each/actions/workflows/test.yml)
 [![Latest GitHub Release](https://img.shields.io/github/v/release/nodenv/nodenv-each?label=github&logo=github&sort=semver)](https://github.com/nodenv/nodenv-each/releases/latest)
@@ -50,4 +50,5 @@ Forked from [Chris Eppstein's](https://github.com/chriseppstein)
 by [Jason Karns](https://github.com/jasonkarns)
 and modified for [nodenv](https://github.com/nodenv/nodenv).
 
+[nodenv]: https://github.com/nodenv/nodenv
 [nodenv-aliases]: https://github.com/nodenv/nodenv-aliases

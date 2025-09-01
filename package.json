@@ -1,12 +1,12 @@
 {
   "name": "@nodenv/nodenv-each",
   "version": "1.3.0",
-  "description": "nodenv plugin to run a command across all installed nodes",
+  "description": "A nodenv plugin to run commands with each installed Node version.",
   "homepage": "https://github.com/nodenv/nodenv-each#readme",
   "license": "MIT",
   "contributors": [
     "Chris Eppstein <chris@eppsteins.net> (http://chriseppstein.github.com)",
-    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+    "Jason Karns <jason.karns@gmail.com> (http://jasonkarns.com)"
   ],
   "repository": {
     "type": "git",
